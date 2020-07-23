@@ -1,3 +1,6 @@
+kubectl exec -it stackstorm-st2actionrunner-748d8558dd-7hsn5 -- /bin/bash
+
+
 $ kubectl get pv
 
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                             STORAGECLASS       REASON   AGE
