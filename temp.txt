@@ -28,7 +28,7 @@ VPC:
 {
     "ParameterKey": "VPC",
     "ParameterValue": ""
-},
+}
 ]
 
 
