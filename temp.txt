@@ -1,0 +1,104 @@
+CatalinaOpts:
+  Default: ''
+CidrBlock:
+  Default: '0.0.0.0/0'
+CloudWatchIntegration:
+  Default: "Off"
+ClusterNodeInstanceType:
+  Default: c5.xlarge
+ClusterNodeCount:
+  Default: 1
+ClusterNodeVolumeSize:
+  Default: 50
+CustomDnsName:
+DBEngineVersion:
+  Default: '9.6'
+DBInstanceClass:
+  Default: db.m5.large
+DBIops:
+  Default: 1000
+DBSecretName:
+DBMaxIdle:
+  Default: 20
+DBMaxWaitMillis:
+  Default: 10000
+DBMinEvictableIdleTimeMillis:
+  Default: 180000
+DBMinIdle:
+  Default: 10
+DBMultiAZ:
+  Default: true
+DBPoolMaxSize:
+  Default: 20
+DBPoolMinSize:
+  Default: 20
+DBReadReplicaInstanceClass:
+  Default: none
+DBRemoveAbandoned:
+  Default: true
+DBRemoveAbandonedTimeout:
+  Default: 60
+DBSnapshotName:
+  Default: ''
+DBStorage:
+  Default: 10
+DBStorageType:
+  Default: General Purpose (SSD)
+DBTestOnBorrow:
+  Default: false
+DBTestWhileIdle:
+  Default: true
+DBTimeBetweenEvictionRunsMillis:
+  Default: 60000
+DeployEnvironment:
+  Default: prod
+DeployFromAnsible:
+  #Default: https://bitbucket.org/atlassian/dc-deployments-automation.git;master;aws_jira_dc_node.yml
+  Default: ssh://git@stash.addteq.com:7999/cust/atlassian-ansible.git;feature/MIN-4894-create-cloudformation-template-for-jira-server-with-postgres-installation;aws_jira_dc_node.yml
+EfsLifecyclePolicyDays:
+  Default: none
+ExternalSubnets:
+HostedZone:
+  Default: ''
+InternalSubnets:
+JiraProduct:
+  Default: all
+JvmHeapOverride:
+KeyPairName:
+KmsKeyArn:
+  Default: ''
+LoadBalancerScheme:
+  Default: internet-facing
+# LocalAnsible is an exit point provided to allow further customization of at Atlassian stack by ansible. See example at https://bitbucket.org/atlassian/atlassian-local-ansible-example
+LocalAnsibleGitRepo:
+  Default: ''
+LocalAnsibleGitSshKeyName:
+  Default: ''
+MailEnabled:
+  Default: true
+ProductDownloadUrl:
+ProductVersion:
+  Default: 8.5.3
+SSLCertificateARN:
+SubDomainName:
+TomcatAcceptCount:
+  Default: 10
+TomcatConnectionTimeout:
+  Default: 20000
+TomcatContextPath:
+  Default: ''
+TomcatDefaultConnectorPort:
+  Default: 8080
+TomcatEnableLookups:
+  Default: false
+TomcatMaxThreads:
+  Default: 200
+TomcatMinSpareThreads:
+  Default: 10
+TomcatProtocol:
+  Default: 'HTTP/1.1'
+TomcatRedirectPort:
+  Default: 8443
+TomcatScheme:
+  Default: http
+VPC:
