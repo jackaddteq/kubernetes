@@ -3,3 +3,10 @@ kubectl create deployment webapp1 --image=nginx:1.16-alpine-perl --dry-run -o ya
 
 # create pod
 kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml
+
+
+#rollout
+k apply -f webapp2.yml  #nginx:1.17-alpine-perl
+
+
+
