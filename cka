@@ -50,8 +50,95 @@ NAME                   STATUS   ROLES    AGE     VERSION
 pool-nyqch4qlz-3p9k6   Ready    <none>   5d11h   v1.18.8
 pool-nyqch4qlz-3pjhg   Ready    <none>   12d     v1.18.8
 
+#### Networking
+$ kubectl expose deployment webapp1 --port=80
+service/webapp1 exposed
+
+$ kubectl get svc | grep webapp1
+webapp1      ClusterIP   10.245.61.106    <none>        80/TCP    25s
+
+$ kubectl get svc -o=wide | grep webapp1
+webapp1      ClusterIP   10.245.61.106    <none>        80/TCP    80s    app=webapp
+
+$ kubectl expose deployment webapp1 --port=80 --dry-run -o yaml
+W1027 22:26:38.363187   23564 helpers.go:535] --dry-run is deprecated and can be replaced with --dry-run=client.
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp1
+  name: webapp1
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: webapp
+status:
+  loadBalancer: {}
 
 
+#### scheduling
+kubectl label nodes node1 disktype=ssd
+
+kubectl get nodes --show-labels=true
+
+# in deployment, select the above node
+nodeSelector:
+  distype: "ssd"
+  
+# multiple scheduler
+# manually schedule pod without a scheduler
+
+kubectl get events -w # watch event as it happens
+
+#### Security
+
+
+#### Cluster Maintenence
+# Upgrade
+backup
+upgrade kubeadm
+drain the control plane node
+kubeadm upgrade plan
+kubeadm upgrade apply v1.18.x
+kubectl uncordon
+upgrade kubectl
+systemctl restart kubelet
+upgrade worker nodes
+
+## backup/restor
+# backup both master node with kubernetes config / etc db
+# backup etcd 2 ways: etcd built-in snapshot / volume snapshot
+
+#### Monitor and Logging
+## Monitor cluster
+# Node problem detector
+# Metrics-server
+kubectl top nodes
+kubectl top pods
+
+## monitor app
+Liveness probe  
+Readiness probe
+
+## Cluster component log
+# node /var/log or /var/log/containers
+kube-apiserver.log kube-scheduler.log, kube-controller-manager.log
+kubelet.log kube-proxy.log
+
+## app logs
+kubectl logs pod1
+kubectl describe pod1
+
+
+### Storage
+
+
+  
+  
 
 
 
