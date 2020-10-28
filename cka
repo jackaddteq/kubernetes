@@ -1,12 +1,61 @@
+##### App lifecycle management
+
 # create deployment
 kubectl create deployment webapp1 --image=nginx:1.16-alpine-perl --dry-run -o yaml > webapp1.yml
 
 # create pod
 kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml
 
-
 #rollout
 k apply -f webapp2.yml  #nginx:1.17-alpine-perl
+
+kubectl rollout status deployment webapp1
+deployment "webapp1" successfully rolled out
+
+kubectl get deployment -o wide | grep webapp1
+webapp1   8/10    5            8           27h    nginx        nginx:1.17-alpine                   app=webapp
+
+kubectl rollout undo deploy webapp1
+deployment.apps/webapp1 rolled back
+
+kubectl get deployment -o wide | grep webapp1
+webapp1   10/10   10           10          27h    nginx        nginx:1.16-alpine                   app=webapp
+
+kp -w
+
+kubectl scale --replicas=5 deployment/webapp1
+
+# CronJobs / ConfigMap
+
+#### Installation, configuration, Validation (kubeadm)
+# kubeadmin init, kubeadm join, kubeadm reset
+
+
+kubectl get componentstatus
+NAME                 STATUS    MESSAGE             ERROR
+controller-manager   Healthy   ok                  
+etcd-0               Healthy   {"health":"true"}   
+scheduler            Healthy   ok  
+
+
+kubectl cluster-info
+Kubernetes master is running at https://1a733cd8-97a3-452d-b3e9-8968c5836625.k8s.ondigitalocean.com
+CoreDNS is running at https://1a733cd8-97a3-452d-b3e9-8968c5836625.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+
+kubectl get nodes
+NAME                   STATUS   ROLES    AGE     VERSION
+pool-nyqch4qlz-3p9k6   Ready    <none>   5d11h   v1.18.8
+pool-nyqch4qlz-3pjhg   Ready    <none>   12d     v1.18.8
+
+
+
+
+
+
+
 
 
 
