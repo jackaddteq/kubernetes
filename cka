@@ -172,6 +172,10 @@ node1  12
 node2  12
 
 
+kubectl get nodes --sort-by=.metadata.name
+
+kubectl get nodes --sort-by=.status.capacity.cpu
+
 
 
 
