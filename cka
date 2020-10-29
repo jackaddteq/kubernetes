@@ -134,11 +134,44 @@ kubectl logs pod1
 kubectl describe pod1
 
 
+
 ### Storage
 
 
-  
-  
+### Json Path
+kubectl get pods -o=jsonpath='{ .items[1].spec.containers[0].image }'  
+nginx
+
+kubectl get nodes -o=jsonpath='{.items[*].metadata.name}'    
+master node1 node2
+
+kubectl get nodes -o=jsonpath='{.items[*].status.nodeInfo.architecture}' 
+amd64 amd64 amd64 
+
+kubectl get nodes -o=jsonpath='{.items[*].status.capacity.cpu}'
+12 12 12
+
+kubectl get nodes -o=jsonpath='{.items[*].metadata.name} {.items[*].status.capacity.cpu}'
+master node1 node2 12 12 12
+
+
+kubectl get nodes -o=jsonpath='{.items[*].metadata.name} {"\n"} {.items[*].status.capacity.cpu}'  
+master node1 node2 
+12 12 12
+
+kubectl get nodes -o=jsonpath='{range .items[*]} {.metadata.name} {"\t"} {.status.capacity.cpu}{"\n"}{end}'
+master 12
+node1  12
+node2  12
+
+
+kubectl get nodes -o=custom-columns='NODE:.metadata.name, CPU:.status.capacity.cpu'
+Node   CPU
+master 12
+node1  12
+node2  12
+
+
 
 
 
