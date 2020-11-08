@@ -177,6 +177,11 @@ kubectl describe pod1
 
 
 ### Storage
+# Static Provisioning
+# create storage, pv, pvc, pod (using pvc)
+
+# Dynamic Provsioning
+Storage class (dynamically create storage), pvc, pod (using pvc)
 
 
 ### Json Path
