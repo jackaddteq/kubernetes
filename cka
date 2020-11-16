@@ -267,7 +267,7 @@ kubectl get nodes --sort-by=.metadata.name
 
 kubectl get nodes --sort-by=.status.capacity.cpu
 
-
+k -n postgresql get secret postgresql -o=jsonpath='{.data.postgresql-password}' | base64 --decode | more
 
 
 
