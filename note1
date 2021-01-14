@@ -107,4 +107,5 @@ https://ngrok.com/product
 kubectl api-resources --verbs=list --namespaced -o name \
   | xargs -n 1 kubectl get --show-kind --ignore-not-found -n stackstorm-ha
   
-  
+#### remove stucked pods  
+kubectl delete pod <PODNAME> --grace-period=0 --force --namespace <NAMESPACE>  
