@@ -31,4 +31,51 @@ spec:
           serviceName: myservice
           servicePort: 80
         path: /mypath(/|$)(.*)
-          
+
+########################################################
+# Grafana working
+
+grafana.ini:
+  server:
+    #root_url: %(protocol)s://%(domain)s:%(http_port)s/grafana/ 
+    root_url: http://165.227.254.231/grafana
+    root_url: http://localhost:3000/grafana  
+    serve_from_sub_path: true
+
+
+ingress:
+  enabled: true
+  # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+  # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+  # ingressClassName: nginx
+  # Values can be templated
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  labels: {}
+  path: /grafana
+
+
+##########################################################
+
+grafana.ini:
+  server:
+    root_url: http://localhost:3000/grafana  
+
+ingress:
+  enabled: true
+  # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+  # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+  # ingressClassName: nginx
+  # Values can be templated
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  labels: {}
+  path: /grafana(/|$)(.*)
+
+  # pathType is only for k8s > 1.19
+  pathType: Prefix
+
+
