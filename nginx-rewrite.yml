@@ -78,7 +78,7 @@ ingress:
   # pathType is only for k8s > 1.19
   pathType: Prefix
 
-########
+####################################################
 ingress:
   enabled: true 
   annotations:
