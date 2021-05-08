@@ -1,6 +1,10 @@
 kubectl proxy - Opens proxy port to API server
 kubectl port-forward - Opens port to target deployment pods
 
+### Verify binary
+shasum -a 512 kubernetes.tar.gz 
+sha512sum kubernetes.tar.gz 
+
 
 #### kubectl proxy 
 
