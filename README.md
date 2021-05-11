@@ -1,6 +1,17 @@
 # kubernetes
 
 ```
+tmux
+ctr-b %  # add vertical pane
+ctr-b <-  -> # switch pane ctr-b arrow
+ctr-b "  # add horizontal pane
+
+ctr-b c  # add window
+ctr-b 1  # switch to 1
+ctr-b ,  # rename window
+```
+
+```
 kubectl delete pods <pod> -n redis --grace-period=0 --force
 kubectl patch pod <pod> -p '{"metadata":{"finalizers":null}}'
 ```
