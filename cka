@@ -270,7 +270,17 @@ kubectl get nodes --sort-by=.status.capacity.cpu
 k -n postgresql get secret postgresql -o=jsonpath='{.data.postgresql-password}' | base64 --decode | more
 
 
+Run the command kubectl expose deployment hr-web-app --type=NodePort --port=8080 --name=hr-web-app-service --dry-run -o yaml > hr-web-app-service.yaml to generate a service definition file. Then edit the nodeport in it and create a service.
 
+
+format_list_bulleted
+Tests
+11 / 12
+Use JSON PATH query to retrieve the osImages of all the nodes and store it in a file /opt/outputs/nodes_os_x43kj56.txt
+
+
+# get osimage for each node
+kubectl get nodes -o jsonpath='{.items[*].status.nodeInfo.osImage}' > /opt/outputs/nodes_os_x43kj56.txt
 
 
 
