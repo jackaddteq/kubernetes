@@ -1,6 +1,13 @@
 # kubernetes
 
 ```
+apt install -y iproute2  # ip 
+apt install dnsutils  # nslookup
+apt install net-tools  # netstat
+apt-get install iputils-ping  # ping
+
+
+
 tmux
 ctr-b %  # add vertical pane
 ctr-b <-  -> # switch pane ctr-b arrow
